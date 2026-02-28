@@ -370,7 +370,7 @@
         <p class="text-xs text-sky-500/70 tracking-widest text-center">made with sky blue happiness for Kiko 🌷</p>
     </div>
 
-    <!-- CHERRY PAGE - updated with ONLY CHERRY'S favourite sections -->
+    <!-- CHERRY PAGE - with Chocolate Cake added -->
     <div id="cherry-page" class="hidden fixed inset-0 bg-gradient-to-br from-sky-400 via-cyan-400 to-blue-500 z-20 overflow-y-auto">
         <button onclick="goBack()" class="fixed top-8 left-8 z-50 flex items-center gap-2 text-white hover:text-sky-100 transition text-sm tracking-widest font-medium">← BACK TO ENTRANCE</button>
         
@@ -416,7 +416,7 @@
                 </div>
             </div>
 
-            <!-- Cherry's Favourite Foods (updated - only Cherry) -->
+            <!-- Cherry's Favourite Foods -->
             <div class="py-20 border-t border-white/30">
                 <h2 class="title-font text-5xl font-bold text-sky-100 mb-12 text-center tracking-wider">Cherry's Favourite Foods 🍔🥰</h2>
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -463,7 +463,7 @@
                 </div>
             </div>
 
-            <!-- NEW: Cherry's Favourite Drinks -->
+            <!-- Cherry's Favourite Drinks -->
             <div class="py-20 border-t border-white/30">
                 <h2 class="title-font text-5xl font-bold text-sky-100 mb-12 text-center tracking-wider">Cherry's Favourite Drinks 🥤💛</h2>
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -480,7 +480,7 @@
                 </div>
             </div>
 
-            <!-- NEW: Cherry's Favourite Desserts -->
+            <!-- Cherry's Favourite Desserts - NOW WITH CHOCOLATE CAKE -->
             <div class="py-20 border-t border-white/30">
                 <h2 class="title-font text-5xl font-bold text-sky-100 mb-12 text-center tracking-wider">Cherry's Favourite Desserts 🍰💛</h2>
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -493,6 +493,12 @@
                         <div class="food-emoji mb-4">🧇🍫</div>
                         <div class="text-2xl font-semibold text-white mb-1">Chocolate Waffle</div>
                         <p class="text-sky-100 text-sm">Crispy outside, gooey chocolate inside — my sweet escape!</p>
+                    </div>
+                    <!-- NEW CHOCOLATE CAKE -->
+                    <div onclick="eatFood('Chocolate Cake')" class="food-card rounded-3xl p-8 text-center cursor-pointer group">
+                        <div class="food-emoji mb-4">🍫🎂</div>
+                        <div class="text-2xl font-semibold text-white mb-1">Chocolate Cake</div>
+                        <p class="text-sky-100 text-sm">Decadent layered chocolate cake with ganache frosting — my absolute weakness!</p>
                     </div>
                     <!-- Space for more in future -->
                     <div class="food-card rounded-3xl p-8 text-center cursor-pointer group opacity-75">
@@ -541,7 +547,7 @@
         </div>
     </div>
 
-    <!-- KANAK MODAL (unchanged) -->
+    <!-- KANAK MODAL -->
     <div id="kanak-modal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-30">
         <div class="bg-white rounded-3xl max-w-xs w-full mx-6 overflow-hidden text-center shadow-2xl">
             <div class="p-12">
@@ -554,7 +560,7 @@
         </div>
     </div>
 
-    <!-- Secret Garden Modal (unchanged) -->
+    <!-- Secret Garden Modal -->
     <div id="secret-garden-modal" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center z-[110]">
         <div class="bg-white/95 backdrop-blur-3xl rounded-3xl max-w-2xl w-full mx-6 overflow-hidden">
             <div class="p-8 border-b flex justify-between items-center">
@@ -694,7 +700,6 @@
             }
         }
 
-        // UPDATED eatFood - ONLY CHERRY'S favourite (no Kiko mention)
         function eatFood(food) {
             launchLoveBurst(55);
             increaseJoy(8);
