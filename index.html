@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Cherry Smiles</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#38bdf8">
@@ -235,7 +234,7 @@
             transform: scale(1.12);
         }
 
-        /* SCROLL FIX */
+        /* 14-INCH LAPTOP + MOBILE */
         #cherry-page {
             position: fixed;
             inset: 0;
@@ -243,6 +242,21 @@
             -webkit-overflow-scrolling: touch;
             overscroll-behavior-y: contain;
             z-index: 20;
+        }
+        .cherry-container {
+            max-width: 1152px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @media (max-width: 1366px) {
+            .nav-glass > div {
+                padding-left: 2rem !important;
+                padding-right: 2rem !important;
+            }
+        }
+        @media (max-width: 768px) {
+            .quick-btn { width: 56px; height: 56px; font-size: 32px; }
+            .photo-card img { height: 220px; }
         }
     </style>
 </head>
@@ -252,7 +266,7 @@
  
     <!-- NAVBAR -->
     <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
-        <div class="w-full px-12 h-20 flex items-center relative">
+        <div class="w-full px-6 lg:px-12 h-20 flex items-center relative">
             <div class="flex items-center gap-6 flex-shrink-0">
                 <div class="dropdown">
                     <button class="flex items-center gap-3 px-6 py-3 rounded-3xl text-sky-700 font-semibold hover:bg-white/70 active:scale-95 transition-all shadow-sm">
@@ -267,6 +281,10 @@
                         <div onclick="quickAction('memory')" class="dropdown-item">📸 Add a Memory</div>
                         <div onclick="quickAction('hug')" class="dropdown-item">🤗 Virtual Hug</div>
                         <div onclick="quickAction('surprise')" class="dropdown-item">🌟 Surprise for Kiko</div>
+                        <!-- NEW MAGICAL OPTIONS -->
+                        <div onclick="quickAction('wand')" class="dropdown-item">🪄 Magic Wand</div>
+                        <div onclick="quickAction('starwish')" class="dropdown-item">🌠 Starlight Wish</div>
+                        <div onclick="quickAction('spell')" class="dropdown-item">✨ Cast Love Spell</div>
                         <div class="border-t border-sky-100 my-3 mx-5"></div>
                         <div class="px-6 py-2 text-xs tracking-widest text-sky-500 font-medium">Cherry's Nickname</div>
                         <select onchange="changeNickname(this)" class="mx-5 w-[calc(100%-40px)] bg-sky-50 border border-sky-200 rounded-2xl py-3.5 px-5 text-sky-700 text-sm focus:outline-none focus:border-sky-400">
@@ -393,11 +411,11 @@
         <p class="text-xs text-sky-500/70 tracking-widest text-center">made with sky blue happiness for Kiko 🌷</p>
     </div>
 
-    <!-- CHERRY PAGE - FULLY SCROLLABLE WITH YOUR REAL PHOTOS -->
+    <!-- CHERRY PAGE -->
     <div id="cherry-page" class="hidden bg-gradient-to-br from-sky-400 via-cyan-400 to-blue-500">
         <button onclick="goBack()" class="fixed top-8 left-8 z-50 flex items-center gap-2 text-white hover:text-sky-100 transition text-sm tracking-widest font-medium bg-black/30 px-6 py-3 rounded-3xl backdrop-blur-md">← BACK TO ENTRANCE</button>
        
-        <div class="pt-28 pb-32 px-6 max-w-4xl mx-auto text-white">
+        <div class="cherry-container pt-28 pb-32 px-4 sm:px-6 lg:px-8 text-white">
 
             <!-- Welcome -->
             <div class="min-h-[70vh] flex items-center justify-center text-center">
@@ -531,10 +549,10 @@
                 </div>
             </div>
 
-            <!-- BIRTHDAY SECTION WITH YOUR REAL PHOTOS -->
+            <!-- BIRTHDAY SECTION -->
             <div class="py-20 border-t border-white/30">
                 <h2 class="title-font text-5xl font-bold text-sky-100 mb-12 text-center tracking-wider">Cherry's 20th Birthday Celebration 🎂📸✨</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div onclick="viewBirthdayPhoto(1)" class="photo-card rounded-3xl overflow-hidden cursor-pointer">
                         <img src="cake-flowers.jpg" alt="Birthday Cake" class="w-full h-64 object-cover">
                         <div class="p-5 text-center"><p class="text-sky-100 text-sm">My beautiful 20th birthday cake with fresh flowers 💛</p></div>
@@ -613,6 +631,15 @@
         <div class="sticky bottom-8 flex justify-center pb-8">
             <button onclick="goBack()" class="bg-white text-sky-700 px-14 py-6 rounded-3xl text-xl font-semibold shadow-xl hover:bg-sky-50 transition">← RETURN TO ENTRANCE</button>
         </div>
+
+        <!-- MOBILE BOTTOM NAV -->
+        <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-2xl border-t border-sky-200 z-[60] flex justify-around items-center py-3 shadow-2xl">
+            <button onclick="quickAction('hug')" class="flex flex-col items-center text-4xl active:scale-90 transition">🤗</button>
+            <button onclick="quickAction('music')" class="flex flex-col items-center text-4xl active:scale-90 transition">🎵</button>
+            <button onclick="quickAction('memory')" class="flex flex-col items-center text-4xl active:scale-90 transition">📸</button>
+            <button onclick="quickAction('note')" class="flex flex-col items-center text-4xl active:scale-90 transition">💌</button>
+            <button onclick="quickAction('treat')" class="flex flex-col items-center text-4xl active:scale-90 transition">🧇🥤</button>
+        </div>
     </div>
 
     <!-- Kanak Modal -->
@@ -628,18 +655,18 @@
         </div>
     </div>
 
-    <!-- Secret Garden Modal -->
-    <div id="secret-garden-modal" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center z-[110]">
+    <!-- Secret Garden Modal - FIXED -->
+    <div id="secret-garden-modal" onclick="if(event.target === this) closeSecretGarden()" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center z-[110]">
         <div class="bg-white/95 backdrop-blur-3xl rounded-3xl max-w-2xl w-full mx-6 overflow-hidden">
             <div class="p-8 border-b flex justify-between items-center">
                 <h2 class="title-font text-4xl text-sky-700">🌿 Kiko's Secret Garden</h2>
-                <button onclick="closeSecretGarden()" class="text-4xl leading-none text-sky-400 hover:text-sky-600">×</button>
+                <button onclick="closeSecretGarden()" class="text-5xl leading-none text-sky-400 hover:text-sky-600 px-4">×</button>
             </div>
-            <div class="p-10">
+            <div class="p-10 max-h-[75vh] overflow-y-auto">
                 <div id="garden-grid" class="grid grid-cols-4 gap-8"></div>
-                <div class="mt-10 flex justify-center">
-                    <button onclick="plantNewFlower()" class="flex items-center gap-3 bg-gradient-to-r from-pink-400 to-rose-400 text-white px-10 py-4 rounded-3xl font-semibold text-lg shadow-xl hover:scale-105 active:scale-95 transition">
-                        <span class="text-3xl">🌱</span> Plant a new tulip for Kiko
+                <div class="mt-10 flex justify-center gap-4">
+                    <button onclick="plantNewFlower()" class="flex items-center gap-3 bg-gradient-to-r from-pink-400 to-rose-400 text-white px-8 py-4 rounded-3xl font-semibold text-lg shadow-xl hover:scale-105 active:scale-95 transition">
+                        <span class="text-3xl">🌱</span> Plant a new tulip
                     </button>
                 </div>
             </div>
@@ -798,18 +825,35 @@
         }
         function openSecretGarden() {
             document.getElementById('secret-garden-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
             renderGarden();
         }
         function closeSecretGarden() {
             document.getElementById('secret-garden-modal').classList.add('hidden');
+            document.body.style.overflow = 'visible';
         }
         function plantNewFlower() {
             const newFlowers = ['🌷','🌹','🌺','🪻','🌻','💐'];
             plantedFlowers.push(newFlowers[Math.floor(Math.random()*newFlowers.length)]);
             localStorage.setItem('plantedFlowers', JSON.stringify(plantedFlowers));
             renderGarden();
-            launchLoveBurst(28);
-            increaseJoy(4);
+            launchLoveBurst(60);
+            increaseJoy(6);
+            const success = document.createElement('div');
+            success.style.position = 'fixed';
+            success.style.top = '50%';
+            success.style.left = '50%';
+            success.style.transform = 'translate(-50%, -50%)';
+            success.style.background = 'rgba(251,191,36,0.95)';
+            success.style.color = 'white';
+            success.style.padding = '20px 40px';
+            success.style.borderRadius = '9999px';
+            success.style.fontSize = '24px';
+            success.style.zIndex = '200';
+            success.style.boxShadow = '0 0 60px #fcd34d';
+            success.textContent = '🌷 Beautiful tulip planted! Kiko is dancing with joy 💃';
+            document.body.appendChild(success);
+            setTimeout(() => success.remove(), 2200);
         }
         const whispers = [
             "You are my favourite white tulip in the whole garden 🌷",
@@ -845,6 +889,26 @@
                 case 'garden': openSecretGarden(); break;
                 case 'whisper': showRandomWhisper(); break;
                 case 'stargaze': alert('🌠 You and Kiko are lying under the stars holding hands... the night feels magical ✨'); launchLoveBurst(50); increaseJoy(7); break;
+
+                // NEW ADVANCED MAGICAL OPTIONS
+                case 'wand':
+                    launchLoveBurst(150);
+                    increaseJoy(18);
+                    alert('🪄 *SWOOSH!* Magic Wand activated! Golden sparkles are dancing around Kiko right now ✨ She feels magical and extra happy!');
+                    break;
+                case 'starwish':
+                    const wish = prompt("🌠 Whisper your special wish for Kiko to the stars...");
+                    if (wish && wish.trim() !== "") {
+                        launchLoveBurst(100);
+                        increaseJoy(15);
+                        alert(`🌟 Your wish "${wish}" has been carried to the stars! Kiko is looking up at the sky and smiling brightly 💛`);
+                    }
+                    break;
+                case 'spell':
+                    launchLoveBurst(130);
+                    increaseJoy(22);
+                    alert('💖 Love Spell cast successfully! The whole garden is glowing pink and Kiko is sending you the biggest virtual hug ever 🌷💕');
+                    break;
             }
         }
         function changeNickname(select) {
