@@ -14,35 +14,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap');
-  
-        body {
-            font-family: 'Poppins', system-ui, sans-serif;
-            transition: background 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .title-font {
-            font-family: 'Playfair Display', serif;
-        }
-  
-        #floating {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 5;
-            overflow: hidden;
-        }
-  
-        .floating-item {
-            position: absolute;
-            font-size: 42px;
-            user-select: none;
-            animation: fly linear infinite;
-            opacity: 0.9;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
-        }
-        .fly1 { animation-name: fly1; }
-        .fly2 { animation-name: fly2; }
-        .fly3 { animation-name: fly3; }
-        .fly4 { animation-name: fly4; }
+        body { font-family: 'Poppins', system-ui, sans-serif; transition: background 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .title-font { font-family: 'Playfair Display', serif; }
+        #floating { position: fixed; inset: 0; pointer-events: none; z-index: 5; overflow: hidden; }
+        .floating-item { position: absolute; font-size: 42px; user-select: none; animation: fly linear infinite; opacity: 0.9; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
+        .fly1 { animation-name: fly1; } .fly2 { animation-name: fly2; } .fly3 { animation-name: fly3; } .fly4 { animation-name: fly4; }
         @keyframes fly1 { 0% { transform: translateX(-120px) translateY(0) rotate(-25deg); } 25% { transform: translateX(30vw) translateY(-110px) rotate(22deg); } 50% { transform: translateX(65vw) translateY(85px) rotate(-26deg); } 75% { transform: translateX(88vw) translateY(-65px) rotate(28deg); } 100% { transform: translateX(125vw) translateY(45px) rotate(-18deg); } }
         @keyframes fly2 { 0% { transform: translateX(-140px) translateY(60px) rotate(-12deg); } 25% { transform: translateX(28vw) translateY(-160px) rotate(38deg); } 50% { transform: translateX(58vw) translateY(35px) rotate(-45deg); } 75% { transform: translateX(82vw) translateY(-105px) rotate(19deg); } 100% { transform: translateX(130vw) translateY(70px) rotate(-20deg); } }
         @keyframes fly3 { 0% { transform: translateX(-110px) translateY(-40px) rotate(18deg); } 25% { transform: translateX(35vw) translateY(95px) rotate(-33deg); } 50% { transform: translateX(72vw) translateY(-135px) rotate(27deg); } 75% { transform: translateX(91vw) translateY(65px) rotate(-38deg); } 100% { transform: translateX(128vw) translateY(15px) rotate(12deg); } }
@@ -52,222 +28,56 @@
         .neon-2 { text-shadow: 0 0 15px #f9a8d4, 0 0 30px #ec4899, 0 0 55px #db2777; }
         .neon-3 { text-shadow: 0 0 15px #fde047, 0 0 30px #facc15, 0 0 55px #eab308; }
         .neon-4 { text-shadow: 0 0 15px #bae6fd, 0 0 30px #7dd3fc, 0 0 55px #38bdf8; }
-        .neon-5 { text-shadow: 0 0 15px #bae6fd, 0 0 30px #7dd3fc, 0 0 55px #38bdf8; } /* Blue Sky */
-        .neon-6 { text-shadow: 0 0 15px #fcd34d, 0 0 30px #fb923c, 0 0 55px #e11d48; } /* Sunset Beach */
-        .option-card {
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .option-card:hover {
-            transform: scale(1.09) translateY(-12px);
-            box-shadow: 0 0 80px -20px #22d3ee;
-        }
-        .glass {
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(18px);
-            border: 1px solid rgba(103, 232, 249, 0.6);
-            transition: all 0.6s ease;
-        }
-        .theme-btn {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .theme-btn.active {
-            transform: scale(1.08);
-            box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.5);
-        }
-        .nav-glass {
-            background: rgba(255,255,255,0.55) !important;
-            backdrop-filter: blur(16px);
-            box-shadow: 0 8px 25px -12px rgba(34, 211, 238, 0.15);
-            border-bottom: 1px solid rgba(103, 232, 249, 0.25);
-        }
-        [data-theme="4"] .nav-glass,
-        [data-theme="5"] .nav-glass,
-        [data-theme="6"] .nav-glass {
-            background: rgba(15, 23, 42, 0.55) !important;
-            border-color: rgba(165, 243, 252, 0.25);
-        }
-        .dropdown {
-            position: relative;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%;
-            margin-top: 4px;
-            background: white;
-            border-radius: 24px;
-            box-shadow: 0 25px 60px -15px rgb(0 0 0 / 0.25);
-            padding: 14px 0;
-            min-width: 220px;
-            border: 1px solid #bae6fd;
-            z-index: 100;
-            opacity: 0;
-            transform: scale(0.95) translateY(8px);
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            pointer-events: none;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-            opacity: 1;
-            transform: scale(1) translateY(0);
-            pointer-events: auto;
-        }
-        .dropdown-item {
-            padding: 13px 26px;
-            font-size: 15px;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-        }
-        .dropdown-item:hover {
-            background: #f0f9ff;
-            color: #0369a1;
-            padding-left: 32px;
-        }
-        .quick-btn {
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            background: rgba(255,255,255,0.85);
-            border-radius: 9999px;
-            box-shadow: 0 8px 25px -8px #67e8f9;
-            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: 2px solid transparent;
-        }
-        .quick-btn:hover {
-            transform: scale(1.22) translateY(-6px) rotate(8deg);
-            box-shadow: 0 20px 40px -12px #22d3ee;
-            border-color: #67e8f9;
-        }
-        .quick-btn:active {
-            transform: scale(0.92);
-        }
-        .treat-btn {
-            animation: treatFloat 2.4s ease-in-out infinite;
-        }
-        @keyframes treatFloat {
-            0%, 100% { transform: translateY(0) rotate(-6deg) scale(1); }
-            50% { transform: translateY(-10px) rotate(6deg) scale(1.12); }
-        }
-        .happiness-card {
-            animation: softGlow 4s ease-in-out infinite;
-        }
-        @keyframes softGlow {
-            0%, 100% { box-shadow: 0 0 30px -10px #fcd34d; }
-            50% { box-shadow: 0 0 55px 15px #fcd34d; }
-        }
-        #confettiCanvas {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 100;
-            mix-blend-mode: screen;
-        }
-        .love-meter {
-            position: relative;
-            width: 72px;
-            height: 72px;
-        }
-        .love-meter svg {
-            transform: rotate(-90deg);
-        }
-        .garden-flower {
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            cursor: pointer;
-        }
-        .garden-flower:hover {
-            transform: scale(1.35) rotate(12deg);
-            filter: brightness(1.25) drop-shadow(0 0 20px #f472b6);
-        }
-        .whisper-bubble {
-            animation: whisperPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        @keyframes whisperPop {
-            0% { transform: scale(0.6) translateY(20px); opacity: 0; }
-            100% { transform: scale(1) translateY(0); opacity: 1; }
-        }
-        .sparkle {
-            position: absolute;
-            font-size: 18px;
-            pointer-events: none;
-            animation: sparkleAnim 1.8s ease-out forwards;
-            z-index: 10;
-        }
-        @keyframes sparkleAnim {
-            0% { transform: scale(0.2) rotate(0deg); opacity: 1; }
-            100% { transform: scale(1.8) rotate(180deg); opacity: 0; }
-        }
-        .food-card {
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            background: rgba(255,255,255,0.18);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.35);
-        }
-        .food-card:hover {
-            transform: scale(1.08) translateY(-8px) rotate(2deg);
-            box-shadow: 0 0 60px -15px #f472b6;
-            border-color: rgba(251, 191, 36, 0.6);
-        }
-        .food-emoji {
-            font-size: 78px;
-            transition: all 0.4s ease;
-        }
-        .food-card:hover .food-emoji {
-            transform: scale(1.25) rotate(12deg);
-        }
-        .photo-card {
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.4);
-            overflow: hidden;
-        }
-        .photo-card:hover {
-            transform: scale(1.06) translateY(-10px);
-            box-shadow: 0 0 70px -20px #f472b6;
-        }
-        .photo-card img {
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .photo-card:hover img {
-            transform: scale(1.12);
-        }
-        /* 14-INCH LAPTOP + MOBILE */
-        #cherry-page {
-            position: fixed;
-            inset: 0;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            overscroll-behavior-y: contain;
-            z-index: 20;
-        }
-        .cherry-container {
-            max-width: 1152px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        @media (max-width: 1366px) {
-            .nav-glass > div {
-                padding-left: 2rem !important;
-                padding-right: 2rem !important;
-            }
-        }
-        @media (max-width: 768px) {
-            .quick-btn { width: 56px; height: 56px; font-size: 32px; }
-            .photo-card img { height: 220px; }
-        }
+        .neon-5 { text-shadow: 0 0 15px #bae6fd, 0 0 30px #7dd3fc, 0 0 55px #38bdf8; }
+        .neon-6 { text-shadow: 0 0 15px #fcd34d, 0 0 30px #fb923c, 0 0 55px #e11d48; }
+        .neon-7 { text-shadow: 0 0 15px #86efac, 0 0 30px #4ade80, 0 0 55px #22c55e; }
+        .option-card { transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .option-card:hover { transform: scale(1.09) translateY(-12px); box-shadow: 0 0 80px -20px #22d3ee; }
+        .glass { background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(18px); border: 1px solid rgba(103, 232, 249, 0.6); transition: all 0.6s ease; }
+        .theme-btn { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .theme-btn.active { transform: scale(1.08); box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.5); }
+        .nav-glass { background: rgba(255,255,255,0.55) !important; backdrop-filter: blur(16px); box-shadow: 0 8px 25px -12px rgba(34, 211, 238, 0.15); border-bottom: 1px solid rgba(103, 232, 249, 0.25); }
+        [data-theme="4"] .nav-glass, [data-theme="5"] .nav-glass, [data-theme="6"] .nav-glass, [data-theme="7"] .nav-glass { background: rgba(15, 23, 42, 0.55) !important; border-color: rgba(165, 243, 252, 0.25); }
+        .dropdown { position: relative; }
+        .dropdown-content { display: none; position: absolute; top: 100%; margin-top: 4px; background: white; border-radius: 24px; box-shadow: 0 25px 60px -15px rgb(0 0 0 / 0.25); padding: 14px 0; min-width: 220px; border: 1px solid #bae6fd; z-index: 100; opacity: 0; transform: scale(0.95) translateY(8px); transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); pointer-events: none; }
+        .dropdown:hover .dropdown-content { display: block; opacity: 1; transform: scale(1) translateY(0); pointer-events: auto; }
+        .dropdown-item { padding: 13px 26px; font-size: 15px; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; gap: 12px; cursor: pointer; }
+        .dropdown-item:hover { background: #f0f9ff; color: #0369a1; padding-left: 32px; }
+        .quick-btn { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 28px; background: rgba(255,255,255,0.85); border-radius: 9999px; box-shadow: 0 8px 25px -8px #67e8f9; transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); border: 2px solid transparent; }
+        .quick-btn:hover { transform: scale(1.22) translateY(-6px) rotate(8deg); box-shadow: 0 20px 40px -12px #22d3ee; border-color: #67e8f9; }
+        .quick-btn:active { transform: scale(0.92); }
+        .treat-btn { animation: treatFloat 2.4s ease-in-out infinite; }
+        @keyframes treatFloat { 0%, 100% { transform: translateY(0) rotate(-6deg) scale(1); } 50% { transform: translateY(-10px) rotate(6deg) scale(1.12); } }
+        .happiness-card { animation: softGlow 4s ease-in-out infinite; }
+        @keyframes softGlow { 0%, 100% { box-shadow: 0 0 30px -10px #fcd34d; } 50% { box-shadow: 0 0 55px 15px #fcd34d; } }
+        #confettiCanvas { position: fixed; inset: 0; pointer-events: none; z-index: 100; mix-blend-mode: screen; }
+        .love-meter { position: relative; width: 72px; height: 72px; }
+        .love-meter svg { transform: rotate(-90deg); }
+        .garden-flower { transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; }
+        .garden-flower:hover { transform: scale(1.35) rotate(12deg); filter: brightness(1.25) drop-shadow(0 0 20px #f472b6); }
+        .whisper-bubble { animation: whisperPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        @keyframes whisperPop { 0% { transform: scale(0.6) translateY(20px); opacity: 0; } 100% { transform: scale(1) translateY(0); opacity: 1; } }
+        .sparkle { position: absolute; font-size: 18px; pointer-events: none; animation: sparkleAnim 1.8s ease-out forwards; z-index: 10; }
+        @keyframes sparkleAnim { 0% { transform: scale(0.2) rotate(0deg); opacity: 1; } 100% { transform: scale(1.8) rotate(180deg); opacity: 0; } }
+        .food-card { transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); background: rgba(255,255,255,0.18); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.35); }
+        .food-card:hover { transform: scale(1.08) translateY(-8px) rotate(2deg); box-shadow: 0 0 60px -15px #f472b6; border-color: rgba(251, 191, 36, 0.6); }
+        .food-emoji { font-size: 78px; transition: all 0.4s ease; }
+        .food-card:hover .food-emoji { transform: scale(1.25) rotate(12deg); }
+        .photo-card { transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); background: rgba(255,255,255,0.15); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.4); overflow: hidden; }
+        .photo-card:hover { transform: scale(1.06) translateY(-10px); box-shadow: 0 0 70px -20px #f472b6; }
+        .photo-card img { transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .photo-card:hover img { transform: scale(1.12); }
+        #cherry-page { position: fixed; inset: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior-y: contain; z-index: 20; }
+        .cherry-container { max-width: 1152px; margin-left: auto; margin-right: auto; }
+        @media (max-width: 1366px) { .nav-glass > div { padding-left: 2rem !important; padding-right: 2rem !important; } }
+        @media (max-width: 768px) { .quick-btn { width: 56px; height: 56px; font-size: 32px; } .photo-card img { height: 220px; } }
     </style>
 </head>
 <body id="main-body" data-theme="1" class="bg-gradient-to-br from-sky-200 via-cyan-100 to-indigo-200 min-h-screen relative overflow-y-auto">
     <div id="floating"></div>
     <canvas id="confettiCanvas" class="fixed inset-0 pointer-events-none z-[100]"></canvas>
 
-    <!-- NAVBAR (exact original) -->
+    <!-- NAVBAR - ✨ on LEFT side -->
     <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
         <div class="w-full px-6 lg:px-12 h-20 flex items-center relative">
             <div class="flex items-center gap-6 flex-shrink-0">
@@ -315,6 +125,8 @@
                         <div onclick="changeNicknameFromRight('Honeypie')" class="dropdown-item">Honeypie</div>
                     </div>
                 </div>
+                <!-- ✨ SPARKLE BUTTON ON LEFT SIDE -->
+                <button onclick="speakFavourite()" title="Cherry will always be Kiko's favourite ✨" class="quick-btn text-3xl">✨</button>
             </div>
             <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
                 <div id="nav-title" class="title-font text-4xl font-bold tracking-widest text-sky-700 neon neon-1">Cherry Smiles</div>
@@ -344,7 +156,7 @@
         </div>
     </nav>
 
-    <!-- LANDING PAGE (exact original + new themes) -->
+    <!-- FULL LANDING PAGE WITH ORIGINAL BOTTOM -->
     <div id="landing" class="min-h-screen flex flex-col relative z-10 px-6 max-w-md mx-auto w-full pt-28 pb-32">
         <div id="hero-emoji" class="absolute -top-6 left-1/2 -translate-x-1/2 text-8xl opacity-30 pointer-events-none">🌷</div>
         <div class="flex-1 flex flex-col justify-center">
@@ -398,9 +210,14 @@
                         <span class="text-4xl mb-1">🌅</span>
                         <span class="text-[10px] font-medium text-orange-700 tracking-widest">SUNSET BEACH</span>
                     </button>
+                    <button onclick="switchTheme(7)" id="btn-7" class="theme-btn col-span-1 bg-white/90 hover:bg-white border-2 border-emerald-400 rounded-2xl p-3 flex flex-col items-center shadow">
+                        <span class="text-4xl mb-1">🌲</span>
+                        <span class="text-[10px] font-medium text-emerald-700 tracking-widest">FOREST GLADE</span>
+                    </button>
                 </div>
             </div>
         </div>
+        <!-- ORIGINAL BOTTOM SECTION - FULLY RESTORED -->
         <div class="mt-auto pt-16 pb-12 text-center">
             <div class="happiness-card inline-flex items-center gap-4 bg-white/75 backdrop-blur-3xl rounded-3xl px-10 py-8 border border-amber-200 shadow-2xl">
                 <span class="text-5xl">💛</span>
@@ -420,10 +237,10 @@
         <p class="text-xs text-sky-500/70 tracking-widest text-center">made with sky blue happiness for Kiko 🌷</p>
     </div>
 
-    <!-- CHERRY PAGE (exact original - nothing changed) -->
+    <!-- CHERRY PAGE - 100% COMPLETE & UNSHORTENED -->
     <div id="cherry-page" class="hidden bg-gradient-to-br from-sky-400 via-cyan-400 to-blue-500">
         <button onclick="goBack()" class="fixed top-8 left-8 z-50 flex items-center gap-2 text-white hover:text-sky-100 transition text-sm tracking-widest font-medium bg-black/30 px-6 py-3 rounded-3xl backdrop-blur-md">← BACK TO ENTRANCE</button>
-      
+     
         <div class="cherry-container pt-28 pb-32 px-4 sm:px-6 lg:px-8 text-white">
             <!-- Welcome -->
             <div class="min-h-[70vh] flex items-center justify-center text-center">
@@ -433,6 +250,7 @@
                     <p class="text-3xl mt-6 text-sky-100">Kiko missed her favourite white tulip so much...</p>
                 </div>
             </div>
+
             <!-- Whisper -->
             <div class="py-12">
                 <div onclick="showRandomWhisper()" class="mx-auto max-w-md bg-white/20 backdrop-blur-2xl rounded-3xl p-6 flex items-center gap-4 cursor-pointer hover:bg-white/30 transition-all">
@@ -443,6 +261,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- Memories -->
             <div class="py-20 border-t border-white/30">
                 <h2 class="title-font text-5xl font-bold text-sky-100 mb-10 text-center">Our Beautiful Memories 📸</h2>
@@ -452,6 +271,7 @@
                     <div onclick="showMemory(3)" class="aspect-square bg-white/20 backdrop-blur-xl rounded-3xl flex items-center justify-center text-7xl border border-white/40 cursor-pointer hover:scale-105 transition">🌌</div>
                 </div>
             </div>
+
             <!-- Sweet Notes -->
             <div class="py-20 border-t border-white/30">
                 <h2 class="title-font text-5xl font-bold text-sky-100 mb-10 text-center">Sweet Notes from Kiko 💌</h2>
@@ -462,140 +282,59 @@
                     — Kiko
                 </div>
             </div>
+
             <!-- Foods -->
             <div class="py-20 border-t border-white/30">
                 <h2 class="title-font text-5xl font-bold text-sky-100 mb-12 text-center tracking-wider">Cherry's Favourite Foods 🍔🥰</h2>
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    <div onclick="eatFood('Pav Bhaji')" class="food-card rounded-3xl p-8 text-center cursor-pointer group">
-                        <div class="food-emoji mb-4">🥘</div>
-                        <div class="text-2xl font-semibold text-white mb-1">Pav Bhaji</div>
-                        <p class="text-sky-100 text-sm">Spicy mashed veggies with buttery pavs — my weekend ritual!</p>
-                    </div>
-                    <div onclick="eatFood('Chilli Potato')" class="food-card rounded-3xl p-8 text-center cursor-pointer group">
-                        <div class="food-emoji mb-4">🥔🌶️</div>
-                        <div class="text-2xl font-semibold text-white mb-1">Chilli Potato</div>
-                        <p class="text-sky-100 text-sm">Crispy, tangy, spicy — I never leave any piece behind!</p>
-                    </div>
-                    <div onclick="eatFood('W Logo Burger')" class="food-card rounded-3xl p-8 text-center cursor-pointer group">
-                        <div class="food-emoji mb-4">🍔</div>
-                        <div class="text-2xl font-semibold text-white mb-1">W Logo Burger</div>
-                        <p class="text-sky-100 text-sm">Juicy double cheese with the big W — my special treat!</p>
-                    </div>
-                    <div onclick="eatFood('Vada Pav')" class="food-card rounded-3xl p-8 text-center cursor-pointer group">
-                        <div class="food-emoji mb-4">🥟</div>
-                        <div class="text-2xl font-semibold text-white mb-1">Vada Pav</div>
-                        <p class="text-sky-100 text-sm">Mumbai’s favourite spicy potato vada in soft pav — pure love!</p>
-                    </div>
-                    <div onclick="eatFood('Pani Puri')" class="food-card rounded-3xl p-8 text-center cursor-pointer group">
-                        <div class="food-emoji mb-4">🥟💦</div>
-                        <div class="text-2xl font-semibold text-white mb-1">Pani Puri</div>
-                        <p class="text-sky-100 text-sm">Crispy puris filled with tangy water — I laugh so much while eating!</p>
-                    </div>
-                    <div onclick="eatFood('Mango Lassi')" class="food-card rounded-3xl p-8 text-center cursor-pointer group">
-                        <div class="food-emoji mb-4">🥭🥛</div>
-                        <div class="text-2xl font-semibold text-white mb-1">Mango Lassi</div>
-                        <p class="text-sky-100 text-sm">Thick, sweet, creamy — my ultimate summer favourite!</p>
-                    </div>
-                    <div onclick="eatFood('Cheese Loaded Fries')" class="food-card rounded-3xl p-8 text-center cursor-pointer group">
-                        <div class="food-emoji mb-4">🍟🧀</div>
-                        <div class="text-2xl font-semibold text-white mb-1">Cheese Loaded Fries</div>
-                        <p class="text-sky-100 text-sm">Golden fries dripping with cheese — movie night essential!</p>
-                    </div>
-                    <div onclick="eatFood('Chocolate Brownie')" class="food-card rounded-3xl p-8 text-center cursor-pointer group">
-                        <div class="food-emoji mb-4">🍫</div>
-                        <div class="text-2xl font-semibold text-white mb-1">Warm Brownie</div>
-                        <p class="text-sky-100 text-sm">Fudgy chocolate with ice cream — my way to happiness!</p>
-                    </div>
+                    <div onclick="eatFood('Pav Bhaji')" class="food-card rounded-3xl p-8 text-center cursor-pointer group"><div class="food-emoji mb-4">🥘</div><div class="text-2xl font-semibold text-white mb-1">Pav Bhaji</div><p class="text-sky-100 text-sm">Spicy mashed veggies with buttery pavs — my weekend ritual!</p></div>
+                    <div onclick="eatFood('Chilli Potato')" class="food-card rounded-3xl p-8 text-center cursor-pointer group"><div class="food-emoji mb-4">🥔🌶️</div><div class="text-2xl font-semibold text-white mb-1">Chilli Potato</div><p class="text-sky-100 text-sm">Crispy, tangy, spicy — I never leave any piece behind!</p></div>
+                    <div onclick="eatFood('W Logo Burger')" class="food-card rounded-3xl p-8 text-center cursor-pointer group"><div class="food-emoji mb-4">🍔</div><div class="text-2xl font-semibold text-white mb-1">W Logo Burger</div><p class="text-sky-100 text-sm">Juicy double cheese with the big W — my special treat!</p></div>
+                    <div onclick="eatFood('Vada Pav')" class="food-card rounded-3xl p-8 text-center cursor-pointer group"><div class="food-emoji mb-4">🥟</div><div class="text-2xl font-semibold text-white mb-1">Vada Pav</div><p class="text-sky-100 text-sm">Mumbai’s favourite spicy potato vada in soft pav — pure love!</p></div>
+                    <div onclick="eatFood('Pani Puri')" class="food-card rounded-3xl p-8 text-center cursor-pointer group"><div class="food-emoji mb-4">🥟💦</div><div class="text-2xl font-semibold text-white mb-1">Pani Puri</div><p class="text-sky-100 text-sm">Crispy puris filled with tangy water — I laugh so much while eating!</p></div>
+                    <div onclick="eatFood('Mango Lassi')" class="food-card rounded-3xl p-8 text-center cursor-pointer group"><div class="food-emoji mb-4">🥭🥛</div><div class="text-2xl font-semibold text-white mb-1">Mango Lassi</div><p class="text-sky-100 text-sm">Thick, sweet, creamy — my ultimate summer favourite!</p></div>
+                    <div onclick="eatFood('Cheese Loaded Fries')" class="food-card rounded-3xl p-8 text-center cursor-pointer group"><div class="food-emoji mb-4">🍟🧀</div><div class="text-2xl font-semibold text-white mb-1">Cheese Loaded Fries</div><p class="text-sky-100 text-sm">Golden fries dripping with cheese — movie night essential!</p></div>
+                    <div onclick="eatFood('Chocolate Brownie')" class="food-card rounded-3xl p-8 text-center cursor-pointer group"><div class="food-emoji mb-4">🍫</div><div class="text-2xl font-semibold text-white mb-1">Warm Brownie</div><p class="text-sky-100 text-sm">Fudgy chocolate with ice cream — my way to happiness!</p></div>
                 </div>
             </div>
+
             <!-- Drinks -->
             <div class="py-20 border-t border-white/30">
                 <h2 class="title-font text-5xl font-bold text-sky-100 mb-12 text-center tracking-wider">Cherry's Favourite Drinks 🥤💛</h2>
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    <div onclick="eatFood('Amul Smoothie')" class="food-card rounded-3xl p-8 text-center cursor-pointer group">
-                        <div class="food-emoji mb-4">🥭🥤</div>
-                        <div class="text-2xl font-semibold text-white mb-1">Amul Smoothie</div>
-                        <p class="text-sky-100 text-sm">Creamy mango delight — my go-to refreshment every day!</p>
-                    </div>
-                    <div onclick="eatFood('Cold Coffee')" class="food-card rounded-3xl p-8 text-center cursor-pointer group">
-                        <div class="food-emoji mb-4">🧊☕</div>
-                        <div class="text-2xl font-semibold text-white mb-1">Cold Coffee</div>
-                        <p class="text-sky-100 text-sm">Icy, creamy with chocolate drizzle — pure bliss on hot days!</p>
-                    </div>
+                    <div onclick="eatFood('Amul Smoothie')" class="food-card rounded-3xl p-8 text-center cursor-pointer group"><div class="food-emoji mb-4">🥭🥤</div><div class="text-2xl font-semibold text-white mb-1">Amul Smoothie</div><p class="text-sky-100 text-sm">Creamy mango delight — my go-to refreshment every day!</p></div>
+                    <div onclick="eatFood('Cold Coffee')" class="food-card rounded-3xl p-8 text-center cursor-pointer group"><div class="food-emoji mb-4">🧊☕</div><div class="text-2xl font-semibold text-white mb-1">Cold Coffee</div><p class="text-sky-100 text-sm">Icy, creamy with chocolate drizzle — pure bliss on hot days!</p></div>
                 </div>
             </div>
+
             <!-- Desserts -->
             <div class="py-20 border-t border-white/30">
                 <h2 class="title-font text-5xl font-bold text-sky-100 mb-12 text-center tracking-wider">Cherry's Favourite Desserts 🍰💛</h2>
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    <div onclick="eatFood('Chocolate Truffle Pastry')" class="food-card rounded-3xl p-8 text-center cursor-pointer group">
-                        <div class="food-emoji mb-4">🍫🍰</div>
-                        <div class="text-2xl font-semibold text-white mb-1">Chocolate Truffle Pastry</div>
-                        <p class="text-sky-100 text-sm">Rich chocolate layers that melt in my mouth — heavenly!</p>
-                    </div>
-                    <div onclick="eatFood('Chocolate Waffle')" class="food-card rounded-3xl p-8 text-center cursor-pointer group">
-                        <div class="food-emoji mb-4">🧇🍫</div>
-                        <div class="text-2xl font-semibold text-white mb-1">Chocolate Waffle</div>
-                        <p class="text-sky-100 text-sm">Crispy outside, gooey chocolate inside — my sweet escape!</p>
-                    </div>
-                    <div onclick="eatFood('Chocolate Cake')" class="food-card rounded-3xl p-8 text-center cursor-pointer group">
-                        <div class="food-emoji mb-4">🍫🎂</div>
-                        <div class="text-2xl font-semibold text-white mb-1">Chocolate Cake</div>
-                        <p class="text-sky-100 text-sm">Decadent layered chocolate cake with ganache frosting — my absolute weakness!</p>
-                    </div>
-                    <div class="food-card rounded-3xl p-8 text-center cursor-pointer group opacity-75">
-                        <div class="food-emoji mb-4 text-6xl">🍫</div>
-                        <div class="text-2xl font-semibold text-white mb-1">More Desserts</div>
-                        <p class="text-sky-100 text-sm">Coming soon... I'll add more of my favourites here 💛</p>
-                    </div>
+                    <div onclick="eatFood('Chocolate Truffle Pastry')" class="food-card rounded-3xl p-8 text-center cursor-pointer group"><div class="food-emoji mb-4">🍫🍰</div><div class="text-2xl font-semibold text-white mb-1">Chocolate Truffle Pastry</div><p class="text-sky-100 text-sm">Rich chocolate layers that melt in my mouth — heavenly!</p></div>
+                    <div onclick="eatFood('Chocolate Waffle')" class="food-card rounded-3xl p-8 text-center cursor-pointer group"><div class="food-emoji mb-4">🧇🍫</div><div class="text-2xl font-semibold text-white mb-1">Chocolate Waffle</div><p class="text-sky-100 text-sm">Crispy outside, gooey chocolate inside — my sweet escape!</p></div>
+                    <div onclick="eatFood('Chocolate Cake')" class="food-card rounded-3xl p-8 text-center cursor-pointer group"><div class="food-emoji mb-4">🍫🎂</div><div class="text-2xl font-semibold text-white mb-1">Chocolate Cake</div><p class="text-sky-100 text-sm">Decadent layered chocolate cake with ganache frosting — my absolute weakness!</p></div>
+                    <div class="food-card rounded-3xl p-8 text-center cursor-pointer group opacity-75"><div class="food-emoji mb-4 text-6xl">🍫</div><div class="text-2xl font-semibold text-white mb-1">More Desserts</div><p class="text-sky-100 text-sm">Coming soon... I'll add more of my favourites here 💛</p></div>
                 </div>
             </div>
+
             <!-- BIRTHDAY SECTION -->
             <div class="py-20 border-t border-white/30">
                 <h2 class="title-font text-5xl font-bold text-sky-100 mb-12 text-center tracking-wider">Cherry's 20th Birthday Celebration 🎂📸✨</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div onclick="viewBirthdayPhoto(1)" class="photo-card rounded-3xl overflow-hidden cursor-pointer">
-                        <img src="cake-flowers.jpg" alt="Birthday Cake" class="w-full h-64 object-cover">
-                        <div class="p-5 text-center"><p class="text-sky-100 text-sm">My beautiful 20th birthday cake with fresh flowers 💛</p></div>
-                    </div>
-                    <div onclick="viewBirthdayPhoto(2)" class="photo-card rounded-3xl overflow-hidden cursor-pointer">
-                        <img src="happy-smile-bouquet.jpg" alt="Bouquet Smile" class="w-full h-64 object-cover">
-                        <div class="p-5 text-center"><p class="text-sky-100 text-sm">The happiest smile with my birthday bouquet 🌹</p></div>
-                    </div>
-                    <div onclick="viewBirthdayPhoto(3)" class="photo-card rounded-3xl overflow-hidden cursor-pointer">
-                        <img src="princess-20th.jpg" alt="Portrait" class="w-full h-64 object-cover">
-                        <div class="p-5 text-center"><p class="text-sky-100 text-sm">Feeling like a princess on my 20th birthday ✨</p></div>
-                    </div>
-                    <div onclick="viewBirthdayPhoto(4)" class="photo-card rounded-3xl overflow-hidden cursor-pointer">
-                        <img src="friends-special.jpg" alt="Group 1" class="w-full h-64 object-cover">
-                        <div class="p-5 text-center"><p class="text-sky-100 text-sm">My amazing friends who made the day special 💕</p></div>
-                    </div>
-                    <div onclick="viewBirthdayPhoto(5)" class="photo-card rounded-3xl overflow-hidden cursor-pointer">
-                        <img src="group-hug.jpg" alt="Group 2" class="w-full h-64 object-cover">
-                        <div class="p-5 text-center"><p class="text-sky-100 text-sm">Crazy fun group hug moment 🎉</p></div>
-                    </div>
-                    <div onclick="viewBirthdayPhoto(6)" class="photo-card rounded-3xl overflow-hidden cursor-pointer">
-                        <img src="neon-setup.jpg" alt="Neon Cake" class="w-full h-64 object-cover">
-                        <div class="p-5 text-center"><p class="text-sky-100 text-sm">The glowing neon "Happy Birthday" setup 💡</p></div>
-                    </div>
-                    <div onclick="viewBirthdayPhoto(7)" class="photo-card rounded-3xl overflow-hidden cursor-pointer">
-                        <img src="pure-joy.jpg" alt="Portrait 2" class="w-full h-64 object-cover">
-                        <div class="p-5 text-center"><p class="text-sky-100 text-sm">Pure joy on my 20th birthday 🌷</p></div>
-                    </div>
-                    <div onclick="viewBirthdayPhoto(8)" class="photo-card rounded-3xl overflow-hidden cursor-pointer">
-                        <img src="warm-hugs.jpg" alt="Hug 1" class="w-full h-64 object-cover">
-                        <div class="p-5 text-center"><p class="text-sky-100 text-sm">The warmest birthday hugs 💛</p></div>
-                    </div>
-                    <div onclick="viewBirthdayPhoto(9)" class="photo-card rounded-3xl overflow-hidden cursor-pointer">
-                        <img src="best-friends.jpg" alt="Hug 2" class="w-full h-64 object-cover">
-                        <div class="p-5 text-center"><p class="text-sky-100 text-sm">Best friends forever moment 🤗</p></div>
-                    </div>
-                    <div onclick="viewBirthdayPhoto(10)" class="photo-card rounded-3xl overflow-hidden cursor-pointer">
-                        <img src="full-squad.jpg" alt="Group 3" class="w-full h-64 object-cover">
-                        <div class="p-5 text-center"><p class="text-sky-100 text-sm">The full squad that made my 20th unforgettable 🎊</p></div>
-                    </div>
+                    <div onclick="viewBirthdayPhoto(1)" class="photo-card rounded-3xl overflow-hidden cursor-pointer"><img src="cake-flowers.jpg" alt="Birthday Cake" class="w-full h-64 object-cover"><div class="p-5 text-center"><p class="text-sky-100 text-sm">My beautiful 20th birthday cake with fresh flowers 💛</p></div></div>
+                    <div onclick="viewBirthdayPhoto(2)" class="photo-card rounded-3xl overflow-hidden cursor-pointer"><img src="happy-smile-bouquet.jpg" alt="Bouquet Smile" class="w-full h-64 object-cover"><div class="p-5 text-center"><p class="text-sky-100 text-sm">The happiest smile with my birthday bouquet 🌹</p></div></div>
+                    <div onclick="viewBirthdayPhoto(3)" class="photo-card rounded-3xl overflow-hidden cursor-pointer"><img src="princess-20th.jpg" alt="Portrait" class="w-full h-64 object-cover"><div class="p-5 text-center"><p class="text-sky-100 text-sm">Feeling like a princess on my 20th birthday ✨</p></div></div>
+                    <div onclick="viewBirthdayPhoto(4)" class="photo-card rounded-3xl overflow-hidden cursor-pointer"><img src="friends-special.jpg" alt="Group 1" class="w-full h-64 object-cover"><div class="p-5 text-center"><p class="text-sky-100 text-sm">My amazing friends who made the day special 💕</p></div></div>
+                    <div onclick="viewBirthdayPhoto(5)" class="photo-card rounded-3xl overflow-hidden cursor-pointer"><img src="group-hug.jpg" alt="Group 2" class="w-full h-64 object-cover"><div class="p-5 text-center"><p class="text-sky-100 text-sm">Crazy fun group hug moment 🎉</p></div></div>
+                    <div onclick="viewBirthdayPhoto(6)" class="photo-card rounded-3xl overflow-hidden cursor-pointer"><img src="neon-setup.jpg" alt="Neon Cake" class="w-full h-64 object-cover"><div class="p-5 text-center"><p class="text-sky-100 text-sm">The glowing neon "Happy Birthday" setup 💡</p></div></div>
+                    <div onclick="viewBirthdayPhoto(7)" class="photo-card rounded-3xl overflow-hidden cursor-pointer"><img src="pure-joy.jpg" alt="Portrait 2" class="w-full h-64 object-cover"><div class="p-5 text-center"><p class="text-sky-100 text-sm">Pure joy on my 20th birthday 🌷</p></div></div>
+                    <div onclick="viewBirthdayPhoto(8)" class="photo-card rounded-3xl overflow-hidden cursor-pointer"><img src="warm-hugs.jpg" alt="Hug 1" class="w-full h-64 object-cover"><div class="p-5 text-center"><p class="text-sky-100 text-sm">The warmest birthday hugs 💛</p></div></div>
+                    <div onclick="viewBirthdayPhoto(9)" class="photo-card rounded-3xl overflow-hidden cursor-pointer"><img src="best-friends.jpg" alt="Hug 2" class="w-full h-64 object-cover"><div class="p-5 text-center"><p class="text-sky-100 text-sm">Best friends forever moment 🤗</p></div></div>
+                    <div onclick="viewBirthdayPhoto(10)" class="photo-card rounded-3xl overflow-hidden cursor-pointer"><img src="full-squad.jpg" alt="Group 3" class="w-full h-64 object-cover"><div class="p-5 text-center"><p class="text-sky-100 text-sm">The full squad that made my 20th unforgettable 🎊</p></div></div>
                 </div>
             </div>
+
             <!-- Special Moments -->
             <div class="py-20 border-t border-white/30">
                 <h2 class="title-font text-5xl font-bold text-sky-100 mb-10 text-center">Special Moments ✨</h2>
@@ -604,7 +343,8 @@
                     <div class="bg-white/20 backdrop-blur-2xl rounded-3xl p-9 text-center text-xl">The hug that made everything sparkle 💙</div>
                 </div>
             </div>
-            <!-- Secret Garden -->
+
+            <!-- Kiko's Secret Garden -->
             <div class="py-20 border-t border-white/30">
                 <h2 class="title-font text-5xl font-bold text-sky-100 mb-10 text-center">Kiko's Secret Garden 🌿</h2>
                 <div class="text-center">
@@ -614,6 +354,7 @@
                     </button>
                 </div>
             </div>
+
             <!-- Quick Actions -->
             <div class="py-20 border-t border-white/30">
                 <h2 class="title-font text-5xl font-bold text-sky-100 mb-10 text-center">Quick Actions 🌷</h2>
@@ -625,11 +366,14 @@
                 </div>
             </div>
         </div>
+
         <div class="sticky bottom-8 flex justify-center pb-8">
             <button onclick="goBack()" class="bg-white text-sky-700 px-14 py-6 rounded-3xl text-xl font-semibold shadow-xl hover:bg-sky-50 transition">← RETURN TO ENTRANCE</button>
         </div>
+
         <!-- MOBILE BOTTOM NAV -->
         <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-2xl border-t border-sky-200 z-[60] flex justify-around items-center py-3 shadow-2xl">
+            <button onclick="speakFavourite()" class="flex flex-col items-center text-4xl active:scale-90 transition">✨</button>
             <button onclick="quickAction('hug')" class="flex flex-col items-center text-4xl active:scale-90 transition">🤗</button>
             <button onclick="quickAction('music')" class="flex flex-col items-center text-4xl active:scale-90 transition">🎵</button>
             <button onclick="quickAction('memory')" class="flex flex-col items-center text-4xl active:scale-90 transition">📸</button>
@@ -638,7 +382,7 @@
         </div>
     </div>
 
-    <!-- Kanak Modal (exact) -->
+    <!-- Kanak Modal -->
     <div id="kanak-modal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-30">
         <div class="bg-white rounded-3xl max-w-xs w-full mx-6 overflow-hidden text-center shadow-2xl">
             <div class="p-12">
@@ -651,7 +395,7 @@
         </div>
     </div>
 
-    <!-- Secret Garden Modal (exact) -->
+    <!-- Secret Garden Modal -->
     <div id="secret-garden-modal" onclick="if(event.target === this) closeSecretGarden()" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center z-[110]">
         <div class="bg-white/95 backdrop-blur-3xl rounded-3xl max-w-2xl w-full mx-6 overflow-hidden">
             <div class="p-8 border-b flex justify-between items-center">
@@ -680,18 +424,16 @@
             2: { emoji: "🌸", bg: "from-pink-100 via-rose-100 to-fuchsia-100", text: "pink", neon: "neon-2", hero: "🌸" },
             3: { emoji: "💛", bg: "from-yellow-100 via-amber-100 to-orange-100", text: "amber", neon: "neon-3", hero: "💛" },
             4: { emoji: "🌙", bg: "from-slate-950 via-indigo-950 to-black", text: "slate", neon: "neon-4", hero: "🌙" },
-            5: { emoji: "☁️", bg: "from-blue-50 via-sky-300 to-blue-200", text: "sky", neon: "neon-5", hero: "☁️" },   // MORE BLUE SKY
-            6: { emoji: "🌅", bg: "from-amber-300 via-orange-400 to-pink-500", text: "amber", neon: "neon-6", hero: "🌅" } // PRETTIER SUNSET
+            5: { emoji: "☁️", bg: "from-blue-50 via-sky-300 to-blue-200", text: "sky", neon: "neon-5", hero: "☁️" },
+            6: { emoji: "🌅", bg: "from-amber-300 via-orange-400 to-pink-500", text: "amber", neon: "neon-6", hero: "🌅" },
+            7: { emoji: "🌲", bg: "from-emerald-100 via-green-200 to-lime-100", text: "emerald", neon: "neon-7", hero: "🌲" }
         };
         let confettiCanvas = document.getElementById('confettiCanvas');
         let ctx = confettiCanvas.getContext('2d');
         let particlesArray = [];
         confettiCanvas.width = window.innerWidth;
         confettiCanvas.height = window.innerHeight;
-        window.addEventListener('resize', () => {
-            confettiCanvas.width = window.innerWidth;
-            confettiCanvas.height = window.innerHeight;
-        });
+        window.addEventListener('resize', () => { confettiCanvas.width = window.innerWidth; confettiCanvas.height = window.innerHeight; });
         class Particle {
             constructor() {
                 this.x = Math.random() * confettiCanvas.width;
@@ -704,12 +446,7 @@
                 this.emoji = Math.random() > 0.5 ? '💗' : '🌷';
                 this.opacity = 1;
             }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                this.angle += this.rotationSpeed;
-                this.opacity -= 0.008;
-            }
+            update() { this.x += this.speedX; this.y += this.speedY; this.angle += this.rotationSpeed; this.opacity -= 0.008; }
             draw() {
                 ctx.save();
                 ctx.globalAlpha = this.opacity;
@@ -720,16 +457,12 @@
                 ctx.restore();
             }
         }
-        function launchLoveBurst(count = 65) {
-            for (let i = 0; i < count; i++) particlesArray.push(new Particle());
-            animateBurst();
-        }
+        function launchLoveBurst(count = 65) { for (let i = 0; i < count; i++) particlesArray.push(new Particle()); animateBurst(); }
         function animateBurst() {
             ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
             for (let i = particlesArray.length - 1; i >= 0; i--) {
                 let p = particlesArray[i];
-                p.update();
-                p.draw();
+                p.update(); p.draw();
                 if (p.opacity <= 0) particlesArray.splice(i, 1);
             }
             if (particlesArray.length > 0) requestAnimationFrame(animateBurst);
@@ -745,6 +478,7 @@
                 case 4: emoji = Math.random() > 0.5 ? '🌙' : '✨'; break;
                 case 5: emoji = '☁️'; break;
                 case 6: emoji = '🌅'; break;
+                case 7: emoji = Math.random() > 0.6 ? '🌲' : '🌿'; break;
             }
             item.textContent = emoji;
             item.style.left = Math.random() * -110 + 'px';
@@ -760,9 +494,7 @@
             if (intervalId) clearInterval(intervalId);
             document.getElementById('floating').innerHTML = '';
             for (let i = 0; i < 32; i++) setTimeout(createFloating, i * 55);
-            intervalId = setInterval(() => {
-                if (Math.random() > 0.12) createFloating();
-            }, 320);
+            intervalId = setInterval(() => { if (Math.random() > 0.12) createFloating(); }, 320);
         }
         function updateJoyMeter() {
             const offset = 94.2 - (94.2 * (happiness / 100));
@@ -785,27 +517,10 @@
                 }, i * 80);
             }
         }
-        function eatFood(food) {
-            launchLoveBurst(55);
-            increaseJoy(8);
-            alert(`🍽️ Cherry’s eyes lit up! “Yummm my favourite ${food}!” 💕`);
-        }
+        function eatFood(food) { launchLoveBurst(55); increaseJoy(8); alert(`🍽️ Cherry’s eyes lit up! “Yummm my favourite ${food}!” 💕`); }
         function viewBirthdayPhoto(n) {
-            launchLoveBurst(80);
-            increaseJoy(12);
-            const messages = [
-                "",
-                "My beautiful 20th birthday cake with fresh flowers 💛",
-                "The happiest smile with my birthday bouquet 🌹",
-                "Feeling like a princess on my 20th birthday ✨",
-                "My amazing friends who made the day special 💕",
-                "Crazy fun group hug moment 🎉",
-                "The glowing neon 'Happy Birthday' setup 💡",
-                "Pure joy on my 20th birthday 🌷",
-                "The warmest birthday hugs 💛",
-                "Best friends forever moment 🤗",
-                "The full squad that made my 20th unforgettable 🎊"
-            ];
+            launchLoveBurst(80); increaseJoy(12);
+            const messages = ["","My beautiful 20th birthday cake with fresh flowers 💛","The happiest smile with my birthday bouquet 🌹","Feeling like a princess on my 20th birthday ✨","My amazing friends who made the day special 💕","Crazy fun group hug moment 🎉","The glowing neon 'Happy Birthday' setup 💡","Pure joy on my 20th birthday 🌷","The warmest birthday hugs 💛","Best friends forever moment 🤗","The full squad that made my 20th unforgettable 🎊"];
             alert(messages[n] || "What a beautiful memory from my 20th birthday! 💛");
         }
         function renderGarden() {
@@ -815,54 +530,28 @@
                 const div = document.createElement('div');
                 div.className = 'garden-flower text-7xl flex items-center justify-center aspect-square bg-white/60 backdrop-blur rounded-3xl shadow-inner';
                 div.textContent = flower;
-                div.onclick = () => {
-                    div.style.transform = 'scale(1.6) rotate(25deg)';
-                    setTimeout(() => div.style.transform = 'scale(1)', 420);
-                    increaseJoy(1);
-                };
+                div.onclick = () => { div.style.transform = 'scale(1.6) rotate(25deg)'; setTimeout(() => div.style.transform = 'scale(1)', 420); increaseJoy(1); };
                 grid.appendChild(div);
             });
         }
-        function openSecretGarden() {
-            document.getElementById('secret-garden-modal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            renderGarden();
-        }
-        function closeSecretGarden() {
-            document.getElementById('secret-garden-modal').classList.add('hidden');
-            document.body.style.overflow = 'visible';
-        }
+        function openSecretGarden() { document.getElementById('secret-garden-modal').classList.remove('hidden'); document.body.style.overflow = 'hidden'; renderGarden(); }
+        function closeSecretGarden() { document.getElementById('secret-garden-modal').classList.add('hidden'); document.body.style.overflow = 'visible'; }
         function plantNewFlower() {
             const newFlowers = ['🌷','🌹','🌺','🪻','🌻','💐'];
             plantedFlowers.push(newFlowers[Math.floor(Math.random()*newFlowers.length)]);
             localStorage.setItem('plantedFlowers', JSON.stringify(plantedFlowers));
             renderGarden();
-            launchLoveBurst(60);
-            increaseJoy(6);
+            launchLoveBurst(60); increaseJoy(6);
             const success = document.createElement('div');
-            success.style.position = 'fixed';
-            success.style.top = '50%';
-            success.style.left = '50%';
-            success.style.transform = 'translate(-50%, -50%)';
-            success.style.background = 'rgba(251,191,36,0.95)';
-            success.style.color = 'white';
-            success.style.padding = '20px 40px';
-            success.style.borderRadius = '9999px';
-            success.style.fontSize = '24px';
-            success.style.zIndex = '200';
+            success.style.position = 'fixed'; success.style.top = '50%'; success.style.left = '50%'; success.style.transform = 'translate(-50%, -50%)';
+            success.style.background = 'rgba(251,191,36,0.95)'; success.style.color = 'white'; success.style.padding = '20px 40px';
+            success.style.borderRadius = '9999px'; success.style.fontSize = '24px'; success.style.zIndex = '200';
             success.style.boxShadow = '0 0 60px #fcd34d';
             success.textContent = '🌷 Beautiful tulip planted! Kiko is dancing with joy 💃';
             document.body.appendChild(success);
             setTimeout(() => success.remove(), 2200);
         }
-        const whispers = [
-            "You are my favourite white tulip in the whole garden 🌷",
-            "Every time I see the sky I think of you and smile 💙",
-            "Your hugs make my heart do little dances ✨",
-            "I saved a star just for you tonight 🌠",
-            "You make everything feel like spring 💐",
-            "Kiko is blushing because of you right now 🥰"
-        ];
+        const whispers = ["You are my favourite white tulip in the whole garden 🌷","Every time I see the sky I think of you and smile 💙","Your hugs make my heart do little dances ✨","I saved a star just for you tonight 🌠","You make everything feel like spring 💐","Kiko is blushing because of you right now 🥰"];
         function showRandomWhisper() {
             const textEl = document.getElementById('whisper-text');
             textEl.textContent = `"${whispers[Math.floor(Math.random() * whispers.length)]}"`;
@@ -887,66 +576,52 @@
                 case 'surprise': alert('🌟 Kiko prepared a tiny surprise just for you... she’s giggling! 💕'); launchLoveBurst(55); increaseJoy(8); break;
                 case 'treat': alert('🧇🥤 Kiko baked a warm crispy waffle and blended a fresh sweet smoothie just for you! 🍓💛 Enjoy your treat~'); launchLoveBurst(40); increaseJoy(6); break;
                 case 'garden': openSecretGarden(); break;
-                case 'whisper': showRandomWhisper(); break;
-                case 'stargaze': alert('🌠 You and Kiko are lying under the stars holding hands... the night feels magical ✨'); launchLoveBurst(50); increaseJoy(7); break;
-                case 'wand':
-                    launchLoveBurst(150);
-                    increaseJoy(18);
-                    alert('🪄 *SWOOSH!* Magic Wand activated! Golden sparkles are dancing around Kiko right now ✨ She feels magical and extra happy!');
-                    break;
-                case 'starwish':
-                    const wish = prompt("🌠 Whisper your special wish for Kiko to the stars...");
-                    if (wish && wish.trim() !== "") {
-                        launchLoveBurst(100);
-                        increaseJoy(15);
-                        alert(`🌟 Your wish "${wish}" has been carried to the stars! Kiko is looking up at the sky and smiling brightly 💛`);
-                    }
-                    break;
-                case 'spell':
-                    launchLoveBurst(130);
-                    increaseJoy(22);
-                    alert('💖 Love Spell cast successfully! The whole garden is glowing pink and Kiko is sending you the biggest virtual hug ever 🌷💕');
-                    break;
+                case 'wand': launchLoveBurst(150); increaseJoy(18); alert('🪄 *SWOOSH!* Magic Wand activated! Golden sparkles are dancing around Kiko right now ✨ She feels magical and extra happy!'); break;
+                case 'starwish': const wish = prompt("🌠 Whisper your special wish for Kiko to the stars..."); if (wish && wish.trim() !== "") { launchLoveBurst(100); increaseJoy(15); alert(`🌟 Your wish "${wish}" has been carried to the stars! Kiko is looking up at the sky and smiling brightly 💛`); } break;
+                case 'spell': launchLoveBurst(130); increaseJoy(22); alert('💖 Love Spell cast successfully! The whole garden is glowing pink and Kiko is sending you the biggest virtual hug ever 🌷💕'); break;
             }
         }
-        function changeNickname(select) {
-            if (!select.value) return;
-            currentNickname = select.value;
-            document.getElementById('current-nick-display').textContent = currentNickname;
-            alert(`✨ Kiko now calls you ${currentNickname} 💛`);
+        function speakFavourite() {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance("Cherry will always be Kiko's favourite!");
+                utterance.pitch = 1.2; utterance.rate = 0.95; utterance.volume = 0.9;
+                speechSynthesis.speak(utterance);
+                launchLoveBurst(85); increaseJoy(12);
+                for (let i = 0; i < 28; i++) {
+                    setTimeout(() => {
+                        const sparkle = document.createElement('div');
+                        sparkle.className = 'sparkle';
+                        sparkle.textContent = Math.random() > 0.5 ? '🌲' : '🌿';
+                        sparkle.style.left = Math.random() * 100 + '%';
+                        sparkle.style.top = Math.random() * 100 + '%';
+                        sparkle.style.fontSize = (24 + Math.random() * 28) + 'px';
+                        document.body.appendChild(sparkle);
+                        setTimeout(() => sparkle.remove(), 2600);
+                    }, i * 35);
+                }
+                alert('🌲 The enchanted forest echoes loudly: "Cherry will always be Kiko\'s favourite!" 💚✨');
+            } else {
+                alert('🌲 Cherry will always be Kiko\'s favourite! (Voice not supported here)');
+            }
         }
-        function changeNicknameFromRight(name) {
-            currentNickname = name;
-            document.getElementById('current-nick-display').textContent = currentNickname;
-            alert(`✨ Kiko now calls you ${currentNickname} 💛`);
-        }
-        function chooseCherry() {
-            document.getElementById('landing').classList.add('hidden');
-            document.getElementById('cherry-page').classList.remove('hidden');
-            document.getElementById('cherry-page').scrollTop = 0;
-            updateJoyMeter();
-        }
+        function changeNickname(select) { if (!select.value) return; currentNickname = select.value; document.getElementById('current-nick-display').textContent = currentNickname; alert(`✨ Kiko now calls you ${currentNickname} 💛`); }
+        function changeNicknameFromRight(name) { currentNickname = name; document.getElementById('current-nick-display').textContent = currentNickname; alert(`✨ Kiko now calls you ${currentNickname} 💛`); }
+        function chooseCherry() { document.getElementById('landing').classList.add('hidden'); document.getElementById('cherry-page').classList.remove('hidden'); document.getElementById('cherry-page').scrollTop = 0; updateJoyMeter(); }
         function chooseKanak() { document.getElementById('kanak-modal').classList.remove('hidden'); }
         function closeKanakModal() { document.getElementById('kanak-modal').classList.add('hidden'); }
-        function goBack() {
-            document.getElementById('cherry-page').classList.add('hidden');
-            document.getElementById('landing').classList.remove('hidden');
-        }
+        function goBack() { document.getElementById('cherry-page').classList.add('hidden'); document.getElementById('landing').classList.remove('hidden'); }
         function switchTheme(newTheme) {
             currentTheme = newTheme;
             const cfg = themes[newTheme];
             document.getElementById('main-body').className = `bg-gradient-to-br ${cfg.bg} min-h-screen relative overflow-y-auto`;
             document.getElementById('main-body').dataset.theme = newTheme;
-        
             document.getElementById('main-title').className = `title-font text-6xl md:text-7xl font-bold text-${cfg.text}-600 tracking-tighter neon ${cfg.neon} text-center mb-3`;
             const sub = document.getElementById('subtitle');
             sub.className = `text-${cfg.text}-600 text-xl text-center mb-16`;
             sub.textContent = `choose wisely... Kiko is waiting ${cfg.hero}`;
             document.getElementById('hero-emoji').textContent = cfg.hero;
-        
             document.getElementById('nav-title').className = `title-font text-4xl font-bold tracking-widest text-${cfg.text}-700 neon ${cfg.neon}`;
-        
-            for (let i = 1; i <= 6; i++) {
+            for (let i = 1; i <= 7; i++) {
                 const btn = document.getElementById(`btn-${i}`);
                 if (btn) btn.classList.toggle('active', i === newTheme);
             }
@@ -970,9 +645,7 @@
         };
     </script>
 <script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js');
-}
+if ('serviceWorker' in navigator) { navigator.serviceWorker.register('service-worker.js'); }
 </script>
 </body>
 </html>
