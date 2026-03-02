@@ -10,12 +10,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Cherry Smiles">
-    
-    <!-- iOS App Compatibility -->
-    <meta name="apple-touch-fullscreen" content="yes">
-    <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" href="https://picsum.photos/id/1015/1125/2436">
-    <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" href="https://picsum.photos/id/1015/1242/2688">
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
@@ -77,26 +71,12 @@
         .cherry-container { max-width: 1152px; margin-left: auto; margin-right: auto; }
         @media (max-width: 1366px) { .nav-glass > div { padding-left: 2rem !important; padding-right: 2rem !important; } }
         @media (max-width: 768px) { .quick-btn { width: 56px; height: 56px; font-size: 32px; } .photo-card img { height: 220px; } }
-        
-        /* iOS App Enhancements - No change to any original option */
-        #splash {
-            position: fixed; inset: 0; background: linear-gradient(135deg, #fce7f3, #e0f2fe); z-index: 9999;
-            display: flex; align-items: center; justify-content: center; flex-direction: column; transition: opacity 1.4s ease;
-        }
     </style>
 </head>
 <body id="main-body" data-theme="1" class="bg-gradient-to-br from-sky-200 via-cyan-100 to-indigo-200 min-h-screen relative overflow-y-auto">
-    <!-- iOS Splash Screen -->
-    <div id="splash">
-        <div class="text-[140px] mb-8 animate-bounce">🌷</div>
-        <div class="title-font text-6xl text-sky-600 tracking-widest">Cherry Smiles</div>
-        <p class="text-sky-500 mt-4 text-xl">for my favourite Kiko 💛</p>
-    </div>
-
     <div id="floating"></div>
     <canvas id="confettiCanvas" class="fixed inset-0 pointer-events-none z-[100]"></canvas>
-
-    <!-- NAVBAR - ✨ on LEFT side (exactly as original) -->
+    <!-- NAVBAR - ✨ on LEFT side -->
     <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
         <div class="w-full px-6 lg:px-12 h-20 flex items-center relative">
             <div class="flex items-center gap-6 flex-shrink-0">
@@ -144,6 +124,7 @@
                         <div onclick="changeNicknameFromRight('Honeypie')" class="dropdown-item">Honeypie</div>
                     </div>
                 </div>
+                <!-- ✨ SPARKLE BUTTON ON LEFT SIDE -->
                 <button onclick="speakFavourite()" title="Cherry will always be Kiko's favourite ✨" class="quick-btn text-3xl">✨</button>
             </div>
             <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
@@ -173,8 +154,7 @@
             </div>
         </div>
     </nav>
-
-    <!-- FULL LANDING PAGE WITH ALL ORIGINAL CHOOSE OPTIONS -->
+    <!-- FULL LANDING PAGE WITH ORIGINAL BOTTOM -->
     <div id="landing" class="min-h-screen flex flex-col relative z-10 px-6 max-w-md mx-auto w-full pt-28 pb-32">
         <div id="hero-emoji" class="absolute -top-6 left-1/2 -translate-x-1/2 text-8xl opacity-30 pointer-events-none">🌷</div>
         <div class="flex-1 flex flex-col justify-center">
@@ -235,6 +215,7 @@
                 </div>
             </div>
         </div>
+        <!-- ORIGINAL BOTTOM SECTION - FULLY RESTORED -->
         <div class="mt-auto pt-16 pb-12 text-center">
             <div class="happiness-card inline-flex items-center gap-4 bg-white/75 backdrop-blur-3xl rounded-3xl px-10 py-8 border border-amber-200 shadow-2xl">
                 <span class="text-5xl">💛</span>
@@ -253,8 +234,7 @@
         </div>
         <p class="text-xs text-sky-500/70 tracking-widest text-center">made with sky blue happiness for Kiko 🌷</p>
     </div>
-
-    <!-- CHERRY PAGE - 100% COMPLETE, ALL OPTIONS EXACTLY SAME -->
+    <!-- CHERRY PAGE - 100% COMPLETE & UNSHORTENED -->
     <div id="cherry-page" class="hidden bg-gradient-to-br from-sky-400 via-cyan-400 to-blue-500">
         <button onclick="goBack()" class="fixed top-8 left-8 z-50 flex items-center gap-2 text-white hover:text-sky-100 transition text-sm tracking-widest font-medium bg-black/30 px-6 py-3 rounded-3xl backdrop-blur-md">← BACK TO ENTRANCE</button>
     
@@ -328,7 +308,7 @@
                     <div class="food-card rounded-3xl p-8 text-center cursor-pointer group opacity-75"><div class="food-emoji mb-4 text-6xl">🍫</div><div class="text-2xl font-semibold text-white mb-1">More Desserts</div><p class="text-sky-100 text-sm">Coming soon... I'll add more of my favourites here 💛</p></div>
                 </div>
             </div>
-            <!-- BIRTHDAY SECTION (all 10 photos) -->
+            <!-- BIRTHDAY SECTION -->
             <div class="py-20 border-t border-white/30">
                 <h2 class="title-font text-5xl font-bold text-sky-100 mb-12 text-center tracking-wider">Cherry's 20th Birthday Celebration 🎂📸✨</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -415,7 +395,6 @@
             </div>
         </div>
     </div>
-
     <script>
         let currentTheme = 1;
         let intervalId = null;
@@ -634,11 +613,6 @@
             startFloating();
             updateJoyMeter();
             renderGarden();
-            // iOS App Compatibility - Splash fade
-            setTimeout(() => {
-                document.getElementById('splash').style.opacity = '0';
-                setTimeout(() => document.getElementById('splash').remove(), 1600);
-            }, 1800);
             setInterval(() => {
                 if (Math.random() > 0.7 && !document.getElementById('landing').classList.contains('hidden')) {
                     const s = document.createElement('div');
